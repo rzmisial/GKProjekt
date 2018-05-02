@@ -9,8 +9,11 @@ public class BuildManager : MonoBehaviour {
     public static BuildManager Instance;
 
     private TurretBluePrint turretToBuild;
+    private Node _selectedNode;
+    public NodeUI NodeUi;
 
     public GameObject buildEffect;
+    public GameObject sellEffect;
 
     private void Awake()
     {
@@ -27,9 +30,23 @@ public class BuildManager : MonoBehaviour {
         turretToBuild = null;
     }
 
+    public void SelectNode(Node node)
+    {
+        if (_selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+
+        _selectedNode = node;
+        turretToBuild = null;
+        NodeUi.SetTarget(node);
+    }
+
     public void SelectTurretToBuild(TurretBluePrint turret)
     {
         turretToBuild = turret;
+        DeselectNode();
     }
 
     public bool CanBuild
@@ -39,25 +56,18 @@ public class BuildManager : MonoBehaviour {
 
     public bool HasMoney
     {
-        get { return PlayerStats.Money >=turretToBuild.cost ; }
+        get { return PlayerStats.Money >=turretToBuild.Cost ; }
     }
 
-    public void BuildTurretOn(Node node)
+
+    public TurretBluePrint GetTurretToBuild()
     {
+        return turretToBuild;
+    }
 
-        if (PlayerStats.Money < turretToBuild.cost)
-        {
-            return;
-        }
-
-        PlayerStats.Money -= turretToBuild.cost;
-
-        GameObject turret =  Instantiate(this.turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-
-        node.Turret = turret;
-
-        GameObject effect =  Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-
-        Destroy(effect, 2f);
+    public void DeselectNode()
+    {
+        NodeUi.Hide();
+        _selectedNode = null;
     }
 }

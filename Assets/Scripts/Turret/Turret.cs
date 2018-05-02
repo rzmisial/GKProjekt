@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Turret;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class Turret : MonoBehaviour, IUpgrading
+{
 
     private Transform target;
 
@@ -14,7 +16,7 @@ public class Turret : MonoBehaviour {
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
     public Transform partToRotate;
-    public float turnSpeed = 15f;
+    public float turnSpeed = 10f;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -89,5 +91,11 @@ public class Turret : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void Upgrade()
+    {
+        turnSpeed += 5f;
+        fireRate += 1f;
     }
 }

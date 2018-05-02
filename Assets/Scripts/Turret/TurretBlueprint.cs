@@ -6,7 +6,14 @@ using UnityEngine;
 public class TurretBluePrint
 {
 
-    public GameObject prefab;
-    public int cost;
+    public GameObject Prefab;
+    public int Cost;
+
+    public int UpgradeCost;
+    
+    public int GetSellAmount()
+    {
+        return Cost / 2;
+    }
 
 }

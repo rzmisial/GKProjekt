@@ -8,6 +8,9 @@ public class CameraFocusController : MonoBehaviour {
 
     void LateUpdate()
     {
+        if (GameManager.GameEnded)
+            return;
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.position -= new Vector3(movementRatio, 0, 0);

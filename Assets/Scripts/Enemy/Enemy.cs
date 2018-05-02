@@ -70,7 +70,8 @@ public class Enemy : MonoBehaviour {
 
     void EndPath()
     {
-        PlayerStats.Lives--;
+        if(PlayerStats.Lives > 0 )
+            PlayerStats.Lives--;
         Destroy(gameObject);
     }
 }
