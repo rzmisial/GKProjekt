@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
         GameEnded = false;
     }
 
-	void Update () {
 
-	    if (GameEnded)
+    void Update () {
+    
+ 
+        if (GameEnded)
 	    {
             return;
 	    }
