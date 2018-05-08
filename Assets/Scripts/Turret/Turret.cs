@@ -6,7 +6,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour, IUpgrading
 {
 
-    private Transform target;
+    protected Transform target;
 
     [Header("Attributes")]
     public float range = 40f;
@@ -33,10 +33,7 @@ public class Turret : MonoBehaviour, IUpgrading
             return;
         }
 
-        Vector3 direction = target.position - transform.position;
-        Quaternion rotationLook = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, rotationLook, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f,rotation.y,0f);
+        Rotate();
 
 	    if (fireCountdown <= 0f)
 	    {
@@ -47,7 +44,15 @@ public class Turret : MonoBehaviour, IUpgrading
 	    fireCountdown -= Time.deltaTime;
 	}
 
-    void Shoot()
+    virtual protected void Rotate()
+    {
+        Vector3 direction = target.position - transform.position;
+        Quaternion rotationLook = Quaternion.LookRotation(direction);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, rotationLook, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    virtual protected void Shoot()
     {
         GameObject bulletToGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 

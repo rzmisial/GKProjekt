@@ -19,21 +19,23 @@ public class CameraFocusController : MonoBehaviour {
         if (GameManager.GameEnded)
             return;
 
+        float correctedMovementRatio = movementRatio * camControl.distance * Time.deltaTime;
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position -= new Vector3(movementRatio, 0, 0);
+            transform.position -= new Vector3(correctedMovementRatio, 0, 0);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(movementRatio, 0, 0);
+            transform.position += new Vector3(correctedMovementRatio, 0, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= new Vector3(0, 0, movementRatio);
+            transform.position -= new Vector3(0, 0, correctedMovementRatio);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(0, 0, movementRatio);
+            transform.position += new Vector3(0, 0, correctedMovementRatio);
         }
 
         transform.localPosition = new Vector3(transform.localPosition.x > 200 - camControl.distance/2 ? 200 - camControl.distance/2 : transform.localPosition.x,

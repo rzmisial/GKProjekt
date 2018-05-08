@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    private Transform _target;
+    protected Transform _target;
     public int damage = 50;
 
     public float explosionRadius = 0f;
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 	}
 
-    void HitTarget()
+    protected void HitTarget()
     {
         GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 5f);
