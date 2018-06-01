@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 
 	public float speed = 30;
 
+	private Transform character;
 	private Vector3 currentLocation;
 	private Vector3 previousLocation;
 
@@ -27,6 +28,9 @@ public class Enemy : MonoBehaviour {
 
     void Start()
 	{
+
+		character =  this.gameObject.transform.GetChild (0);
+
 	    health = startHealth;
         target = Waypoints.points [0];
 		currentLocation = transform.position;
@@ -34,15 +38,12 @@ public class Enemy : MonoBehaviour {
 
 	void Update()
 	{
-		Debug.Log ("before: " + previousLocation + currentLocation);
 		MovementListener();
-		Debug.Log ("after: " + previousLocation + currentLocation);
 		Vector3 direction = target.position - transform.position;
 		transform.Translate (direction.normalized * speed * Time.deltaTime, Space.World);
 
-		direction.y -= 90;
 		var rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (transform.position-previousLocation), 1);
-		transform.rotation = rotation;
+		character.transform.rotation = rotation;
 
 
 		if (Vector3.Distance (transform.position, target.position) <= 3.0)
