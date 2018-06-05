@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4482340596736208}
   - component: {fileID: 95229888328721076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hellephant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4368227931416036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trunk1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4218465795755886}
   - component: {fileID: 137955297593141622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hellephant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 223587973058145926}
   - component: {fileID: 114910676746889296}
   - component: {fileID: 114029817290837068}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 224032366613614118}
   - component: {fileID: 222345259632558620}
   - component: {fileID: 114819089939782164}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 33113520156508304}
   - component: {fileID: 135676713678305906}
   - component: {fileID: 114887682454820656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Tough
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 224594524164846528}
   - component: {fileID: 222060373347765622}
   - component: {fileID: 114428572250590490}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

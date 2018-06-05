@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour, IUpgrading
     [Header("Attributes")]
     public float range = 40f;
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    protected float fireCountdown = 0f;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4186588728919554}
   - component: {fileID: 95372063198448156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 224046359326362360}
   - component: {fileID: 222175954116935692}
   - component: {fileID: 114911530614848494}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4973637458631114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunBarrelEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 33497386601709066}
   - component: {fileID: 135173390110787574}
   - component: {fileID: 114833651599478628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4072822774491310}
   - component: {fileID: 137423273366489126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 223284576310461390}
   - component: {fileID: 114654019151254230}
   - component: {fileID: 114750938546847656}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4623275764248568}
   - component: {fileID: 137799821412346866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 224183373812667910}
   - component: {fileID: 222578576465229914}
   - component: {fileID: 114434838168505888}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

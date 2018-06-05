@@ -9,7 +9,8 @@ public class Shop : MonoBehaviour {
 
     // types of turret
     public TurretBluePrint basicTurret;
-    
+    public TurretBluePrint canon;
+
 
     private void Start()
     {
@@ -19,5 +20,10 @@ public class Shop : MonoBehaviour {
     public void SelectBasicTurret()
     {
         buildManager.SelectTurretToBuild(basicTurret);
+    }
+
+    public void SelectCanon()
+    {
+        buildManager.SelectTurretToBuild(canon);
     }
 }

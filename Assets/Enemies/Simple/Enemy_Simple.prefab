@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549389743320112}
   - component: {fileID: 137302726451849440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Zombear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 224074175704068448}
   - component: {fileID: 222019108617483332}
   - component: {fileID: 114847412265516104}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4157817281668828}
   - component: {fileID: 95436987633579084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZomBear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 224397831412754898}
   - component: {fileID: 222879765231549388}
   - component: {fileID: 114438700847412020}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 223579504543073680}
   - component: {fileID: 114633535622845098}
   - component: {fileID: 114476378476277774}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 135822816618075622}
   - component: {fileID: 114171155310362364}
   - component: {fileID: 95386336718500982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Simple
   m_TagString: Enemy
   m_Icon: {fileID: 0}
