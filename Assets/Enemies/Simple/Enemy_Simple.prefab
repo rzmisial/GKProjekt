@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816649561811406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 225.44124, y: 0, z: 1291.3049}
+  m_LocalPosition: {x: 447.64444, y: 0, z: 1518.6233}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 4157817281668828}
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d45ce76d342e45976efcba18a5c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 50
   startHealth: 50
   Value: 25
   deathEffect: {fileID: 1241263607304992, guid: 4f26a8e1046f88f4e8b795cd2d26f9f9,
@@ -452,6 +452,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 80}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.099998474, y: 1.7249999}
+  m_AnchoredPosition: {x: 0, y: 2.5}
   m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
