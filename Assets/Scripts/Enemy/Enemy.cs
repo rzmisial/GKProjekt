@@ -5,17 +5,13 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-	public float speed = 30;
+    public float startSpeed = 30;
 
-	private Transform character;
-	private Vector3 currentLocation;
-	private Vector3 previousLocation;
-
-	private Transform target;
-	private int waypointIndex = 0;
+    [HideInInspector]
+	public float speed;
 
     public float startHealth = 100;
-    private float health;
+    public float health;
 
     public int Value = 10;
 
@@ -26,42 +22,11 @@ public class Enemy : MonoBehaviour {
 
     private bool isDead = false;
 
+
     void Start()
-	{
-
-		character =  this.gameObject.transform.GetChild (0);
-
-	    health = startHealth;
-        target = Waypoints.points [0];
-		currentLocation = transform.position;
-	}
-
-	void Update()
-	{
-		MovementListener();
-		Vector3 direction = target.position - transform.position;
-		transform.Translate (direction.normalized * speed * Time.deltaTime, Space.World);
-
-		var rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (transform.position-previousLocation), 1);
-		character.transform.rotation = rotation;
-
-
-		if (Vector3.Distance (transform.position, target.position) <= 3.0)
-		{
-			GetNextWaypoint ();
-		}
-	}
-
-	private void GetNextWaypoint()
-	{
-		if (waypointIndex >= Waypoints.points.Length - 1) {
-			EndPath();
-			return;
-		}
-
-		waypointIndex++;
-		target = Waypoints.points [waypointIndex];
-	}
+    {
+        speed = startSpeed;
+    }
 
     public void TakeDamage(float amount)
     {
@@ -72,6 +37,11 @@ public class Enemy : MonoBehaviour {
         {
             Die();
         }
+    }
+
+    public void Slow( float pct)
+    {
+        speed = startSpeed * (1f - pct);
     }
 
     void Die()
@@ -87,19 +57,4 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
 
     }
-
-    void EndPath()
-    {
-		if(PlayerStats.Lives > 0 )
-            PlayerStats.Lives--;
-		WaveSpawner.EnemiesAlive--;
-		Destroy(gameObject);
-    }
-
-	private void MovementListener()
-	{
-		previousLocation = currentLocation;
-		currentLocation = transform.position;
-
-	}
 }

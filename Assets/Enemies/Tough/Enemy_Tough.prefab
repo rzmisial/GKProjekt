@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 33113520156508304}
   - component: {fileID: 135676713678305906}
   - component: {fileID: 114887682454820656}
+  - component: {fileID: 114298014150728244}
   m_Layer: 8
   m_Name: Enemy_Tough
   m_TagString: Enemy
@@ -225,6 +226,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114298014150728244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715523305638794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b578e0c334f5043b2a3f728b5a1835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
 --- !u!114 &114428572250590490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,8 +303,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d45ce76d342e45976efcba18a5c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 20
   speed: 20
   startHealth: 300
+  health: 0
   Value: 150
   deathEffect: {fileID: 1241263607304992, guid: 792d2cdaac6a77a469f36763b398c442,
     type: 2}

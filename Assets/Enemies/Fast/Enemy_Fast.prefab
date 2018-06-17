@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 33497386601709066}
   - component: {fileID: 135173390110787574}
   - component: {fileID: 114833651599478628}
+  - component: {fileID: 114505418172341702}
   m_Layer: 8
   m_Name: Enemy_Fast
   m_TagString: Enemy
@@ -207,6 +208,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114505418172341702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466987645502838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b578e0c334f5043b2a3f728b5a1835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
 --- !u!114 &114654019151254230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,8 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d45ce76d342e45976efcba18a5c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 75
   speed: 75
   startHealth: 25
+  health: 0
   Value: 10
   deathEffect: {fileID: 1241263607304992, guid: 4e76a0d3b26ce614896a3a266a397534,
     type: 2}

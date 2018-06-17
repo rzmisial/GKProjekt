@@ -70,6 +70,8 @@ GameObject:
   - component: {fileID: 33497386601709066}
   - component: {fileID: 135173390110787574}
   - component: {fileID: 114833651599478628}
+  - component: {fileID: 114881646351577074}
+  - component: {fileID: 114989950940181230}
   m_Layer: 8
   m_Name: Enemy_Boss
   m_TagString: Enemy
@@ -314,12 +316,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d45ce76d342e45976efcba18a5c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 20
   speed: 20
   startHealth: 3000
+  health: 0
   Value: 1500
   deathEffect: {fileID: 1241263607304992, guid: 4e76a0d3b26ce614896a3a266a397534,
     type: 2}
   healthBar: {fileID: 114434838168505888}
+--- !u!114 &114881646351577074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466987645502838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26f2f9bfbc16e3489a6c06bc83d1614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114911530614848494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,6 +362,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114989950940181230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466987645502838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b578e0c334f5043b2a3f728b5a1835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
 --- !u!135 &135173390110787574
 SphereCollider:
   m_ObjectHideFlags: 1

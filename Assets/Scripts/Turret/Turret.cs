@@ -7,41 +7,73 @@ public class Turret : MonoBehaviour, IUpgrading
 {
 
     protected Transform target;
+    private Enemy targetEnemy;
 
     [Header("Attributes")]
     public float range = 40f;
+
+    [Header("Use Bullets(default)")]
+    public GameObject bulletPrefab;
     public float fireRate = 1f;
     protected float fireCountdown = 0f;
+
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public int damageOverTime = 30;
+    public float slowPct = .5f;
+    public LineRenderer lineRenderer;
+    public ParticleSystem impactEffect;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     public float turnSpeed = 10f;
 
-    public GameObject bulletPrefab;
     public Transform firePoint;
 
     // Use this for initialization
     void Start () {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (target == null)
         {
+            
+            if (useLaser)
+            {
+                impactEffect = GetComponentInChildren<ParticleSystem>();
+                if (lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = false;
+                    if(impactEffect != null)
+                    {
+                        impactEffect.Stop();
+                        impactEffect.Clear();
+                    }
+                   
+                }
+            }
             return;
         }
 
         Rotate();
 
-	    if (fireCountdown <= 0f)
-	    {
-	        Shoot();
-	        fireCountdown = 1f / fireRate;
-	    }
+        if (useLaser)
+        {
+            Laser();
+        }
+        else
+        {
+	        if (fireCountdown <= 0f)
+	        {
+	            Shoot();
+	            fireCountdown = 1f / fireRate;
+	        }
 
-	    fireCountdown -= Time.deltaTime;
+	        fireCountdown -= Time.deltaTime;
+        }
 	}
 
     virtual protected void Rotate()
@@ -52,6 +84,28 @@ public class Turret : MonoBehaviour, IUpgrading
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    void Laser()
+    {
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowPct);
+
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+            if (impactEffect != null)
+            {
+                impactEffect.Play();
+            }
+        }
+        
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+
+        Vector3 dir = firePoint.position - target.position;
+
+        impactEffect.transform.position = target.position + dir.normalized * .5f;
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+    }
     virtual protected void Shoot()
     {
         GameObject bulletToGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -86,6 +140,7 @@ public class Turret : MonoBehaviour, IUpgrading
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+            targetEnemy = nearestEnemy.GetComponent<Enemy>();
         } else
         {
             target = null;
