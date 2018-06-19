@@ -2,12 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class representing a cannon.
+/// </summary>
 public class Cannon : Turret {
     
+    /// <summary>
+    /// Layer for enemies.
+    /// </summary>
     public LayerMask enemyMask;
 
+    /// <summary>
+    /// Calculated points for cannon ball trajectory
+    /// </summary>
     private Vector3 [] bezierPoints;
 
+    /// <summary>
+    /// Method updating the canon
+    /// </summary>
     void Update()
     {
         if (target == null)
@@ -26,6 +38,9 @@ public class Cannon : Turret {
         fireCountdown -= Time.deltaTime;
     }
 
+    /// <summary>
+    /// Method responsible for rotating the cannon
+    /// </summary>
     override protected void Rotate()
     {
 
@@ -39,6 +54,10 @@ public class Cannon : Turret {
         }
     }
 
+    /// <summary>
+    /// Method responsible for shooting with the cannon and checking if the shot is possible.
+    /// </summary>
+    /// <returns>information on whether or not the shot is possible</returns>
     protected bool ShootAndConfirm()
     {
         Vector3 rotation2D = partToRotate.rotation.eulerAngles;
@@ -58,6 +77,10 @@ public class Cannon : Turret {
 
     }
 
+    /// <summary>
+    /// Method calculating trajectory of the cannon ball.
+    /// </summary>
+    /// <returns>an array of Bezier points of the trajectory</returns>
     private Vector3 [] CalculateBezierPoints()
     {
         Vector3[] result = new Vector3[3];
@@ -77,6 +100,11 @@ public class Cannon : Turret {
         return result;
     }
 
+    /// <summary>
+    /// Method performing Bezier calculations.
+    /// </summary>
+    /// <param name="t">'t' parameter of Bezier calculations</param>
+    /// <returns>a point on the Bezier curve</returns>
     private Vector3 CalculateBezierPosiiton(float t)
     {
         Vector3 point = new Vector3();
@@ -89,6 +117,9 @@ public class Cannon : Turret {
         return point;
     }
 
+    /// <summary>
+    /// Method for gizmo representation of canon's range.
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         if (bezierPoints != null)

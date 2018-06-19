@@ -5,24 +5,61 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Reflection;
 
+/// <summary>
+/// Class representing a single node on which turrets can be built.
+/// </summary>
 public class Node : MonoBehaviour {
 
+    /// <summary>
+    /// color of the node on hover
+    /// </summary>
     public Color HoverColor;
+    /// <summary>
+    /// color of the node on hover when the player doesn't have enough money
+    /// </summary>
     public Color NotEnoughMoneyColor;
+
+    /// <summary>
+    /// offset for turret building
+    /// </summary>
     public Vector3 positionOffset;
 
+    /// <summary>
+    /// currently built turret
+    /// </summary>
     [HideInInspector]
     public GameObject Turret;
+
+    /// <summary>
+    /// turret to built scheme
+    /// </summary>
     [HideInInspector]
     public TurretBluePrint turretBlueprint;
+
+    /// <summary>
+    /// information on whether or not the turret is upgraded
+    /// </summary>
     [HideInInspector]
     public bool isUpgraded = false;
 
+    /// <summary>
+    /// Neutral color of the node
+    /// </summary>
     private Color nativeColor;
+    
+    /// <summary>
+    /// renderer instance used fot changing colour
+    /// </summary>
     private Renderer rend;
 
+    /// <summary>
+    /// reference to the build manager
+    /// </summary>
     BuildManager buildManager;
 
+    /// <summary>
+    /// Initializer method.
+    /// </summary>
     private void Start()
     {
         buildManager = BuildManager.Instance;
@@ -31,11 +68,18 @@ public class Node : MonoBehaviour {
         nativeColor = rend.material.color;
     }
 
+    /// <summary>
+    /// Obtains inforomation on where to build the new turret.
+    /// </summary>
+    /// <returns>position of the new building spot</returns>
     public Vector3 GetBuildPosition()
     {
         return transform.position + positionOffset;
     }
 
+    /// <summary>
+    /// Handler for the mouse click event - opens the contextual UI and selects the node.
+    /// </summary>
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -56,7 +100,10 @@ public class Node : MonoBehaviour {
 
         BuildTurret(buildManager.GetTurretToBuild());
     }
-    
+
+    /// <summary>
+    /// Handler for the mouse pointing event - changes the node color.
+    /// </summary>
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -80,12 +127,18 @@ public class Node : MonoBehaviour {
         
     }
 
+    /// <summary>
+    /// Handler for the mouse not pointing event - changes the node color back to neutral.
+    /// </summary>
     private void OnMouseExit()
     {
         rend.material.color = nativeColor;
     }
 
-
+    /// <summary>
+    /// Creates a new turret.
+    /// </summary>
+    /// <param name="blueprint">scheme of the turret to build</param>
     void BuildTurret(TurretBluePrint blueprint)
     {
         if (PlayerStats.Money < blueprint.Cost)
@@ -105,6 +158,9 @@ public class Node : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Handles turret upgrading.
+    /// </summary>
     public void UpgradeTurret()
     {
         IUpgrading turret = Turret.GetComponent(typeof(IUpgrading)) as IUpgrading;
@@ -126,6 +182,9 @@ public class Node : MonoBehaviour {
         isUpgraded = true;
     }
 
+    /// <summary>
+    /// Handles turret selling.
+    /// </summary>
     public void SellTurret()
     {
         PlayerStats.Money += turretBlueprint.GetSellAmount();

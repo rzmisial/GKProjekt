@@ -2,23 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe representing a cannon ball
+/// </summary>
 public class CannonBall : Bullet
-
 {
-
+    /// <summary>
+    /// collective time stpent moving
+    /// </summary>
     public float travelTime;
 
+    /// <summary>
+    /// arrau of bezier points for trajectory
+    /// </summary>
     public Vector3[] BezierPoints { get; set; }
+
+    /// <summary>
+    /// explosion object reference
+    /// </summary>
     public GameObject explosion;
 
+    /// <summary>
+    /// timestamp of the beginning of movement
+    /// </summary>
     private float startTime;
 
+    /// <summary>
+    /// Initializer method
+    /// </summary>
     void Start()
     {
         startTime = Time.time;
     }
 
+    /// <summary>
+    /// 't' parameter for Bezier calculations
+    /// </summary>
     private float bezierT = 1f;
+
+    /// <summary>
+    /// Method udpating the position and checking for explosion conditions
+    /// </summary>
     void Update()
     {
         bool selfExplode = false;
@@ -44,6 +68,11 @@ public class CannonBall : Bullet
         bezierT -= bezierTDelta;
     }
 
+    /// <summary>
+    /// Method calculating position on Bezier curve.
+    /// </summary>
+    /// <param name="t">'t' parameter for Bezier calculations</param>
+    /// <returns>position on the Bezier curve</returns>
     private Vector3 CalculateBezierPosiiton(float t)
     {
         Vector3 point = new Vector3();
@@ -56,7 +85,10 @@ public class CannonBall : Bullet
         return point;
     }
 
-
+    /// <summary>
+    /// Method handling collisions. Destroys the ball and applies damage to the enemies in range.
+    /// </summary>
+    /// <param name="col">information about the collision itself</param>
     void OnCollisionEnter(Collision col)
     {
             _target = col.transform;

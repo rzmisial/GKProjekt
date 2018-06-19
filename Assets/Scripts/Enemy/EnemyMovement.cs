@@ -2,18 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class representing enemy movement.
+/// </summary>
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour {
 
+    /// <summary>
+    /// position to which the enemy is moving
+    /// </summary>
     private Transform target;
+    /// <summary>
+    /// next waypoint number
+    /// </summary>
     private int waypointIndex = 0;
 
+    /// <summary>
+    /// position of the model
+    /// </summary>
     public Transform character;
+
+    /// <summary>
+    /// current world position
+    /// </summary>
     private Vector3 currentLocation;
+
+    /// <summary>
+    /// previous world position
+    /// </summary>
     private Vector3 previousLocation;
 
+    /// <summary>
+    /// reference to the enemy object
+    /// </summary>
     private Enemy enemy;
 
+    /// <summary>
+    /// Initializer method.
+    /// </summary>
     void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -24,6 +50,9 @@ public class EnemyMovement : MonoBehaviour {
         currentLocation = transform.position;
     }
 
+    /// <summary>
+    /// Method responsible for moving the enemy and finding a new target.
+    /// </summary>
     void Update()
     {
         MovementListener();
@@ -42,6 +71,9 @@ public class EnemyMovement : MonoBehaviour {
         enemy.speed = enemy.startSpeed;
     }
 
+    /// <summary>
+    /// Method responsible for obtaining the next waypoint.
+    /// </summary>
     private void GetNextWaypoint()
     {
         if (waypointIndex >= Waypoints.points.Length - 1)
@@ -54,6 +86,9 @@ public class EnemyMovement : MonoBehaviour {
         target = Waypoints.points[waypointIndex];
     }
 
+    /// <summary>
+    /// Method decreasing the number of player lives if the enemy reaches the end of the path.
+    /// </summary>
     void EndPath()
     {
         if (PlayerStats.Lives > 0)
@@ -62,6 +97,9 @@ public class EnemyMovement : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Listener method updating the location variables.
+    /// </summary>
     private void MovementListener()
     {
         previousLocation = currentLocation;

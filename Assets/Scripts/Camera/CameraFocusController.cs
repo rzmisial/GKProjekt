@@ -2,18 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class representing an object responsible for moving the camera along the X and Z axis.
+/// </summary>
 public class CameraFocusController : MonoBehaviour {
 
+    /// <summary>
+    /// step value for movement
+    /// </summary>
     public float movementRatio;
+    /// <summary>
+    /// camera object reference
+    /// </summary>
     public Camera cam;
 
+    /// <summary>
+    /// camera controller reference - responsible for moving the actual camera
+    /// </summary>
     private CameraController camControl;
 
+    /// <summary>
+    /// Initializer method.
+    /// </summary>
     void Start()
     {
         camControl = cam.GetComponent<CameraController>();
     }
 
+    /// <summary>
+    /// Method responsible for updating the object and obtaining user input.
+    /// </summary>
     void LateUpdate()
     {
         if (GameManager.GameEnded)

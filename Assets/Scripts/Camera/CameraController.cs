@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for controlling the camera object itself.
+/// </summary>
 public class CameraController : MonoBehaviour {
 
+    /// <summary>
+    /// reference to an object responsible for positioning the camera on X and Z axis
+    /// </summary>
     public GameObject focusObject;
+
+    /// <summary>
+    /// step for controlling camera distance
+    /// </summary>
     public float scrollRatio;
-    
-    [HideInInspector] public float distance { get; set; }
 
-    void Start()
-    {
-        distance = 40.0f;
-    }
+    /// <summary>
+    /// camera dostamce from the ground
+    /// </summary>
+    public float distance;
 
+    /// <summary>
+    /// Method updating camera position.
+    /// </summary>
     void LateUpdate()
     {
 
