@@ -54,7 +54,7 @@ public class Turret : MonoBehaviour, IUpgrading
     /// <summary>
     /// ratio at which enemies hit by the laser will slow down
     /// </summary>
-    public float slowPct = .5f;
+    public float slowPct = .4f;
 
     /// <summary>
     /// reference to a generic line renderer
@@ -236,5 +236,7 @@ public class Turret : MonoBehaviour, IUpgrading
     {
         turnSpeed += 5f;
         fireRate += 1f;
+        damageOverTime += 2;
+        slowPct = .6f;
     }
 }
